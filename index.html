@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A1.2 Sprechtraining - Meine Wohnung (Görsel Akış)</title>
+    <style>
+        /* GENEL STİLLER */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f0f4f8; color: #333; }
+        .container { max-width: 1000px; margin: 20px auto; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-radius: 15px; overflow: hidden; }
+        .header { background-color: #007bff; color: white; padding: 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 2.5em; }
+        .header p { margin: 5px 0 0 0; font-size: 1.1em; opacity: 0.9; }
+
+        /* ZAMANLAYICI STİLİ */
+        .timer-container { 
+            background-color: #dc3545; 
+            color: white; 
+            padding: 15px; 
+            text-align: center; 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            border-bottom: 5px solid #bd2130;
+            cursor: pointer;
+        }
+        #countdown { font-size: 1.8em; display: block; margin-top: 5px; }
+
+        /* TABS VE İÇERİK YAPISI */
+        .tab-menu { 
+            display: flex; 
+            flex-wrap: wrap; 
+            background-color: #e9ecef; 
+            border-bottom: 2px solid #007bff; 
+            padding: 5px 10px;
+        }
+        .tab-button {
+            flex: 1 1 auto;
+            background-color: transparent;
+            border: none;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.3s;
+            border-radius: 8px 8px 0 0;
+            margin: 0 2px;
+        }
+        .tab-button.active {
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 -3px 0 0 #0056b3 inset;
+        }
+        .tab-content { padding: 25px; min-height: 600px; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        
+        /* GÖRSEL STİLLERİ */
+        .slide-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ÖĞRENCİ TANITIM KARTLARI */
+        #intro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-top: 20px; }
+        .question-card { 
+            background-color: #f8f9fa; 
+            border-left: 5px solid #28a745; 
+            padding: 15px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .card-number { color: #28a745; font-weight: bold; margin-right: 10px; }
+
+        /* MOBİL UYUM */
+        @media (max-width: 768px) {
+            .container { margin: 0; border-radius: 0; box-shadow: none; }
+            .header { padding: 20px 10px; }
+            .header h1 { font-size: 2em; }
+            .tab-menu { padding: 5px 0; }
+            .tab-button { font-size: 0.75em; padding: 10px 5px; }
+            .tab-content { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="header">
+        <h1>A1.2 SPRECHTRAINING: Meine Wohnung 🇩🇪</h1>
+        <p>Görsel Akış | Lektion 35</p>
+    </div>
+
+    <div id="timer" class="timer-container" onclick="startTimer()">
+        DERS SÜRESİ: <span id="countdown">BAŞLATMAK İÇİN TIKLAYIN</span>
+    </div>
+
+    <div style="background-color: #fff3cd; padding: 10px; text-align: center; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffeeba;">
+        Zoom/Meet Linki: <a href="[BURAYA KULLANDIĞINIZ VİDEO LİNKİNİ YAPIŞTIRIN]" target="_blank" style="color: #856404;">[Aktif Ders Bağlantısı]</a>
+    </div>
+
+    <div class="tab-menu" id="tabMenu">
+        <button class="tab-button active" onclick="openTab(event, 'Aufwaermen')">1. Tanışma Kartları</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide2')">2. Lernziele</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide3')">3. Ev Tipleri</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide5')">4. Zimmer (Alıştırma)</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide7')">5. Komposita</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide24')">6. Possessivartikel</button>
+        <button class="tab-button" onclick="openTab(event, 'Slide28')">7. Wiederholung (Soru)</button>
+    </div>
+
+    <div class="tab-content">
+
+        <div id="Aufwaermen" class="content-section active">
+            <h2>🗣️ 1. Tanışma ve Isınma Soruları (Aufwärmen)</h2>
+            <p>Öğrencinizle konuşma pratiği yaparken kullanabileceğiniz 20 temel soru kartı. Her iki taraf da cevap verebilir.</p>
+            
+            <div id="intro-cards">
+                <div class="question-card"><span class="card-number">1.</span> Wie heißen Sie / Wie heißt du?</div>
+                <div class="question-card"><span class="card-number">2.</span> Woher kommen Sie / kommst du?</div>
+                <div class="question-card"><span class="card-number">3.</span> Wie alt sind Sie / bist du?</div>
+                <div class="question-card"><span class="card-number">4.</span> Was sind Sie von Beruf / Was bist du von Beruf?</div>
+                <div class="question-card"><span class="card-number">5.</span> Wo arbeiten Sie / arbeitest du?</div>
+                <div class="question-card"><span class="card-number">6.</span> Was sind Ihre Hobbys / Was sind deine Hobbys?</div>
+                <div class="question-card"><span class="card-number">7.</span> Welche Sprachen sprechen Sie / sprichst du?</div>
+                <div class="question-card"><span class="card-number">8.</span> Haben Sie Geschwister / Hast du Geschwister?</div>
+                <div class="question-card"><span class="card-number">9.</span> Wie ist Ihr Familienstand / Wie ist dein Familienstand?</div>
+                <div class="question-card"><span class="card-number">10.</span> Haben Sie Kinder / Hast du Kinder?</div>
+                <div class="question-card"><span class="card-number">11.</span> Wie lange lernen Sie schon Deutsch / lernst du schon Deutsch?</div>
+                <div class="question-card"><span class="card-number">12.</span> Warum lernen Sie Deutsch / lernst du Deutsch?</div>
+                <div class="question-card"><span class="card-number">13.</span> Was machen Sie am Wochenende / machst du am Wochenende?</div>
+                <div class="question-card"><span class="card-number">14.</span> Was essen Sie gern / isst du gern?</div>
+                <div class="question-card"><span class="card-number">15.</span> Haben Sie Haustiere / Hast du Haustiere?</div>
+                <div class="question-card"><span class="card-number">16.</span> Wie ist das Wetter heute?</div>
+                <div class="question-card"><span class="card-number">17.</span> Wann haben Sie Geburtstag / hast du Geburtstag?</div>
+                <div class="question-card"><span class="card-number">18.</span> Sind Sie verheiratet / Bist du verheiratet?</div>
+                <div class="question-card"><span class="card-number">19.</span> Haben Sie einen Garten / Hast du einen Garten?</div>
+                <div class="question-card"><span class="card-number">20.</span> Wie ist Ihre Telefonnummer / Wie ist deine Telefonnummer?</div>
+            </div>
+        </div>
+
+        <div id="Slide2" class="content-section">
+            <h2>✨ Ders Hedefleri (Lernziele)</h2>
+            <img src="2.jpg" alt="Ders Hedefleri Slaytı" class="slide-image">
+        </div>
+        
+        <div id="Slide3" class="content-section">
+            <h2>🏠 Ev Tipleri ve Konuşma (Wo wohnst du?)</h2>
+            <img src="3.jpg" alt="Ev Tipleri Slaytı" class="slide-image">
+        </div>
+
+        <div id="Slide5" class="content-section">
+            <h2>🛋️ Odalar ve Eşleştirme (Zimmer)</h2>
+            <p>Slayt 5'teki görsele bakarak konuşma ve kelime alıştırması yapınız:</p>
+            <img src="5.jpg" alt="Odalar Slaytı" class="slide-image">
+        </div>
+
+        <div id="Slide7" class="content-section">
+            <h2>🔗 Komposita (Birleşik Kelimeler) Kuralı</h2>
+            <p>Birleşik kelimelerin artikeli son kelimeye göre belirlenir.</p>
+            <img src="7.jpg" alt="Komposita Slaytı" class="slide-image">
+        </div>
+
+        <div id="Slide24" class="content-section">
+            <h2>👤 Possessivartikel (İyelik Zamirleri)</h2>
+            <p>Bu alıştırmayı slayt üzerinden yapınız.</p>
+            <img src="24.jpg" alt="Possessivartikel Slaytı" class="slide-image">
+        </div>
+
+        <div id="Slide28" class="content-section">
+            <h2>🔄 Tekrar Soruları (Wiederholung)</h2>
+            <p>Dersin son tekrar sorularını slayt üzerinden sorunuz.</p>
+            <img src="28.jpg" alt="Wiederholung Slaytı" class="slide-image">
+        </div>
+        
+    </div> </div> <script>
+    // --- SEKME FONKSİYONU ---
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("content-section");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab-button");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        if(evt) { 
+            evt.currentTarget.className += " active";
+        } else { 
+            document.querySelector('.tab-button').className += " active";
+        }
+    }
+
+    // Sayfa yüklendiğinde varsayılan olarak ilk sekmeyi göster
+    document.addEventListener("DOMContentLoaded", function() {
+        openTab(null, 'Aufwaermen');
+    });
+
+    // --- ZAMANLAYICI FONKSİYONU ---
+    var totalSeconds = 50 * 60; // 50 dakika
+    var intervalId;
+
+    function formatTime(secs) {
+        var minutes = Math.floor(secs / 60);
+        var seconds = secs % 60;
+        return (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    }
+
+    function updateTimer() {
+        if (totalSeconds <= 0) {
+            clearInterval(intervalId);
+            document.getElementById('countdown').innerHTML = 'SÜRE DOLDU!';
+            document.getElementById('timer').style.backgroundColor = '#6c757d';
+            return;
+        }
+        document.getElementById('countdown').innerHTML = formatTime(totalSeconds);
+        totalSeconds--;
+    }
+
+    function startTimer() {
+        if (intervalId) return;
+
+        document.getElementById('countdown').innerHTML = '50:00';
+        document.getElementById('timer').style.backgroundColor = '#28a745'; 
+        document.getElementById('timer').innerHTML = 'DEVAM EDİYOR: <span id="countdown">50:00</span>';
+        
+        totalSeconds = 50 * 60; // 50 dakika
+        intervalId = setInterval(updateTimer, 1000);
+    }
+</script>
+
+</body>
+</html>
